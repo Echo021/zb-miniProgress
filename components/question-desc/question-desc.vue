@@ -12,7 +12,7 @@
 		  />
 		
 		  <van-field
-		    :value="questionDesc.location || location"
+		    :value="questionDesc.location"
 		    label="位置:"
 				@change="e=>changeValue(e,'location')"
 		    placeholder="输入位置"
@@ -49,7 +49,7 @@
 		},
 		data() {
 			return {
-				location: ''
+
 			};
 		},
 
@@ -66,8 +66,9 @@
 			},
 			async getLocation(){
 				const location = await this.getLocationInfo();
-				this.questionDesc.location = ''
-				this.location = location && location.address
+				this.questionDesc.location = location.address
+				this.updateInfo({date:this.questionDesc,key:'questionDesc'})
+				// this.location = location && location.address
 			},
 			//获取位置信息
 			  async getLocationInfo() {

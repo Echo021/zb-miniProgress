@@ -41,7 +41,12 @@ export default {
 			state[key]=date;
 		},
 		saveInformation(state,key){
-			console.log("提交成功",key)
+			const value = Object.values(state[key])
+			if(value.find(item=>item.length)){
+				console.log("提交成功",key)
+			}else{
+				return Toast('内容为空')
+			}
 			this.commit('m_tab/clearInfo')
 			//提交后台
 		},

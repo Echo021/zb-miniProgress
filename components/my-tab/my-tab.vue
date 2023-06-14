@@ -12,7 +12,7 @@
 			<van-icon name="delete-o" size="20"/>
 			<text>清空</text>
 		</view>
-		<van-button round type="primary" size="small">转成PDF</van-button>
+		<van-button round type="primary" size="small" @click="downPdf">转成PDF</van-button>
 	</view>
 </template>
 
@@ -44,7 +44,7 @@
 			
 			save(){
 				this.saveInformation(this.curPage)
-			}
+			},
 		}
 	}
 </script>

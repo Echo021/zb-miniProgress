@@ -5,7 +5,7 @@
 		</view>
 		<view class="toPage">
 			<text>{{page}}/{{total}}跳转至</text>
-			<input type="text" @blur="gotoPage" value=""> 
+			<input type="text" @blur="gotoPage" > 
 		</view>
 		<view :class="rightClassName" @click="clickNext">
 			<van-icon name="arrow" />
@@ -14,7 +14,7 @@
 </template>
 
 <script>
-	import {mapState, mapMutations} from 'vuex'
+	import {mapState, mapMutations,mapGetters} from 'vuex'
 	export default {
 		name:"my-page",
 		props:{
@@ -23,8 +23,10 @@
 				default: 1,
 			}
 		},
+
 		computed:{
 			...mapState('m_page',['page','total']),
+			
 			leftClassName(){
 				return this.page==1?'btn':'btn active'
 			},
@@ -32,6 +34,7 @@
 				return this.page==3?'btn':'btn active'
 			}
 		},
+
 		data() {
 			return {
 
@@ -56,6 +59,10 @@
 				this.updatePage(page)
 				this.$emit('getPage',page)
 			},
+			changeVal(e){
+				const {value} = e.detail;
+				this.pageNum = value
+			}
 		}
 	}
 </script>

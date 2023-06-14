@@ -20,7 +20,6 @@
 		},
 		methods:{
 			getPagenum(page){
-				console.log(page,"page")
 				this.curPage=page
 			}
 		}
